@@ -5,18 +5,10 @@ public class Main {
     public static int count = 0;
     public static ArrayList<Integer> arr = new ArrayList<>();
 
-    public static void print(){
-        for(int i = 0; i < arr.size(); i++){
-            System.out.print(arr.get(i)+" ");
-        }
-        System.out.println();
-    }
-
     public static void find(int currLen){
         if(currLen == length){
             if(beautiful()){
                 count++;
-                
             }
             return;
         }
