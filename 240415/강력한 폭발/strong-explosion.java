@@ -18,7 +18,8 @@ public class Main {
         }
     }
     public static void check(){
-        Set<List<Integer>> positionSet = new HashSet<>();
+        int[][] tempBoard = new int[board.length][board.length];
+        int sum = 0;
         for(int i = 0; i < bombList.size(); i++){
             int[] bombPosition = bombList.get(i); 
             int currentY = bombPosition[0];
@@ -28,14 +29,16 @@ public class Main {
                 int nextY = currentY + bombArea[j][0];
                 int nextX = currentX + bombArea[j][1];
                 if(nextX < 0 || nextX >= board.length || nextY < 0 || nextY >= board.length) continue;
-                List<Integer> positionArr = new ArrayList<>();
-                positionArr.add(nextY);
-                positionArr.add(nextX);
-                positionSet.add(positionArr);
+                
+                
+                if(tempBoard[nextY][nextX] == 0) {
+                    sum++;
+                }
+                tempBoard[nextY][nextX] = 1;
             }
         }
         
-        maxValue = Math.max(maxValue,positionSet.size());
+        maxValue = Math.max(maxValue,sum);
 
     }
 
