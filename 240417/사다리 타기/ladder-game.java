@@ -61,7 +61,7 @@ public class Main {
     public static void find(int length, int number){
         if(arr.size() == length){
             int[] ans = check();
-            if(arr.size() == ladList.size()) return;
+            
             // 비교하기
             for(int i = 0; i < ans.length; i++){
                 if(result[i] == ans[i]) continue;
@@ -95,7 +95,6 @@ public class Main {
         for(int i = size; i >= 0; i--){
             find(i,0);
         }
-
         
         System.out.println(minValue);
 
