@@ -55,13 +55,13 @@ public class Main {
         if(arr.size() == ladList.size()){
             result = answer;
         }
+
         return answer;
 
     }
     public static void find(int length, int number){
         if(arr.size() == length){
             int[] ans = check();
-            
             // 비교하기
             for(int i = 0; i < ans.length; i++){
                 if(result[i] == ans[i]) continue;
