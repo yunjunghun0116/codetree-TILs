@@ -7,7 +7,7 @@ public class Main {
     public static int[] result; //1,2,3,4
     public static Map<Integer,List<int[]>> makeMap(){
         Map<Integer,List<int[]>> map = new HashMap<>();
-        for(int i = 0; i <= 12; i++){
+        for(int i = 1; i < result.length; i++){
             map.put(i,new ArrayList<>());
         }
 
