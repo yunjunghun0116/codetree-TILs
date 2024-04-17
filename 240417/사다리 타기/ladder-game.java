@@ -92,7 +92,7 @@ public class Main {
 
         Collections.sort(ladList,(a,b)->a[1]-b[1]);
         
-        for(int i = size; i > 0; i--){
+        for(int i = size; i >= 0; i--){
             find(i,0);
         }
 
