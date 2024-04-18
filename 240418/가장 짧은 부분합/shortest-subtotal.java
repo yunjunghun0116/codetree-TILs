@@ -8,13 +8,13 @@ public class Main {
         int end = 0;
         int currentSum = 0;
         for(int i = 0; i < arr.length; i++){
-            while(end < arr.length && currentSum < s) {
+            while(end < arr.length && currentSum< s) {
                 currentSum += arr[end];
                 end++;
             }
 
-            if(currentSum>= s){
-                minLength = Math.min(minLength, end - i);
+            if(currentSum >= s){
+                minLength = Math.min(minLength, end - i );
             }
 
             currentSum -= arr[i];
