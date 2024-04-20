@@ -5,28 +5,17 @@ public class Main {
     public static int k;
     public static int count = 0;
     public static void find(){
-        
-        int end = 0;
 
         Arrays.sort(arr);
 
+        int end = arr.length - 1;
+
         for(int i = 0; i < arr.length; i++){
-            while(end+1 < arr.length && arr[i]+arr[end+1]<=k){
-                end++;
-            }
-            while(i < end && arr[i]+arr[end-1] > k){
+            if(end <= i) break;
+            while( arr[i]+arr[end] > k){
                 end--;
             }
-            if(i < end){
-                if(arr[i]+arr[end]<=k){
-                    count += end - i;
-                    continue; 
-                }
-                if(arr[i]+arr[end-1] <= k){
-                    count += end - i-1;
-                }
-            
-            }
+            count += end - i;
         }
     }
     public static void main(String[] args) {
