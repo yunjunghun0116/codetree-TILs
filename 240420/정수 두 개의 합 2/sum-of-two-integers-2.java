@@ -12,9 +12,10 @@ public class Main {
                 count++;
                 end++;
             }
-            if(arr[i]+arr[end]<=k){
-                count++;
+            if(end == arr.length){
+                end--;
             }
+        
         }
     }
     public static void main(String[] args) {
