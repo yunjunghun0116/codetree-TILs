@@ -6,17 +6,26 @@ public class Main {
     public static int count = 0;
     public static void find(){
         
-        int end = 1;
+        int end = 0;
 
         Arrays.sort(arr);
 
         for(int i = 0; i < arr.length; i++){
-            while(i < end && end+1 < arr.length && arr[i]+arr[end+1]<=k){
+            while(end+1 < arr.length && arr[i]+arr[end+1]<=k){
                 end++;
             }
-            if(arr[i]+arr[end] <= k){
-                
-                count += end - i;
+            while(i < end && arr[i]+arr[end-1] > k){
+                end--;
+            }
+            if(i < end){
+                if(arr[i]+arr[end]<=k){
+                    count += end - i;
+                    continue; 
+                }
+                if(arr[i]+arr[end-1] <= k){
+                    count += end - i-1;
+                }
+            
             }
         }
     }
