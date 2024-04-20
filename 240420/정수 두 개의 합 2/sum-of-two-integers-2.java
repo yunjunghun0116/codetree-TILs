@@ -6,7 +6,7 @@ public class Main {
     public static int count = 0;
     public static void find(){
         
-        int end = 0;
+        int end = 1;
         for(int i = 0; i < arr.length; i++){
             while(end+1 < arr.length && arr[i]+arr[end+1]<=k){
                 end++;
