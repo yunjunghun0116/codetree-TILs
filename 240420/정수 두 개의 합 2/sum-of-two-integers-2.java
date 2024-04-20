@@ -11,11 +11,12 @@ public class Main {
         int end = arr.length - 1;
 
         for(int i = 0; i < arr.length; i++){
-            while(end>0&& arr[i]+arr[end] > k){
+            while(i < end && arr[i]+arr[end] > k){
                 end--;
             }
+
             if(end <= i) break;
-            
+
             count += end - i;
         }
     }
