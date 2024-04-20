@@ -11,7 +11,7 @@ public class Main {
             while(end < arr.length && arr[i]+arr[end]<=k){
                 end++;
             }
-            if(end <  arr.length && arr[i]+arr[end-1] <= k){
+            if(i < end &&  arr[i]+arr[end-1] <= k){
                 count += end - i - 1;
             }
         }
