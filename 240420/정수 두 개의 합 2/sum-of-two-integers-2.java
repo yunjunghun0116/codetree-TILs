@@ -7,13 +7,10 @@ public class Main {
     public static void find(){
         
         int end = 1;
-        
         for(int i = 0; i < arr.length; i++){
             while(end < arr.length && arr[i]+arr[end]<=k){
+                count++;
                 end++;
-            }
-            if(arr[i] + arr[end-1] <= k){
-                count += end - i-1;
             }
         }
     }
