@@ -7,11 +7,15 @@ public class Main {
     public static void find(){
         
         int end = 1;
+
+        Arrays.sort(arr);
+
         for(int i = 0; i < arr.length; i++){
-            while(end+1 < arr.length && arr[i]+arr[end+1]<=k){
+            while(i < end && end+1 < arr.length && arr[i]+arr[end+1]<=k){
                 end++;
             }
-            if(i<end && arr[i]+arr[end] <= k){
+            if(arr[i]+arr[end] <= k){
+                
                 count += end - i;
             }
         }
@@ -26,8 +30,6 @@ public class Main {
         for(int i = 0; i < arr.length; i++){
             arr[i] = Integer.parseInt(sc.nextLine());
         }
-
-        Arrays.sort(arr);
 
         find();
 
