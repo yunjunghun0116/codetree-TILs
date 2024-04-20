@@ -17,9 +17,6 @@ public class Main {
             maxLength = Math.max(end-i,maxLength);
 
             indexArr[arr[i]] = -1;
-
-    
-            
         }
     }
     public static void main(String[] args) {
