@@ -8,11 +8,11 @@ public class Main {
         
         int end = 1;
         for(int i = 0; i < arr.length; i++){
-            while(end < arr.length && arr[i]+arr[end]<=k){
+            while(end+1 < arr.length && arr[i]+arr[end+1]<=k){
                 end++;
             }
-            if(i < end &&  arr[i]+arr[end-1] <= k){
-                count += end - i - 1;
+            if(arr[i]+arr[end] <= k){
+                count += end - i;
             }
         }
     }
