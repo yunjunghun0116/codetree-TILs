@@ -15,12 +15,10 @@ public class Main {
             }
             //indexArr 이  이미 저장되어있거나, end 가 마지막일때
             maxLength = Math.max(end-i,maxLength);
+
             indexArr[arr[i]] = -1;
-            
-            if(end < length && indexArr[arr[end]]!=-1){
-                i = indexArr[arr[end]];
-                indexArr[arr[end]] = end++;
-            }
+
+    
             
         }
     }
