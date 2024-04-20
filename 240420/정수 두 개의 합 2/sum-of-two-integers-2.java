@@ -12,7 +12,7 @@ public class Main {
 
         for(int i = 0; i < arr.length; i++){
             if(end <= i) break;
-            while( arr[i]+arr[end] > k){
+            while(end>0&& arr[i]+arr[end] > k){
                 end--;
             }
             count += end - i;
