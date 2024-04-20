@@ -12,6 +12,9 @@ public class Main {
                 count++;
                 end++;
             }
+            if(arr[i]+arr[end]<=k){
+                count++;
+            }
         }
     }
     public static void main(String[] args) {
