@@ -20,6 +20,7 @@ public class Main {
                 i = indexArr[arr[end]];
                 indexArr[arr[end]] = end++;
             }
+            indexArr[arr[i]] = -1;
         }
     }
     public static void main(String[] args) {
