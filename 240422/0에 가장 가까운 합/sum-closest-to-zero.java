@@ -8,7 +8,7 @@ public class Main {
         Arrays.sort(arr);
         minValue = Math.abs(arr[0]+arr[end]);
         for(int i = 0;i < arr.length; i++){
-            while(i < end && Math.abs(arr[i]+arr[end]) < arr[i]+arr[end-1]){
+            while(i < end && Math.abs(arr[i]+arr[end]) < Math.abs(arr[i]+arr[end-1]){
                 minValue = Math.min(minValue,Math.abs(arr[i]+arr[end--]));
             }
         }
