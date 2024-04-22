@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    public static long[] arr = new int[1000001];
+    public static long[] arr = new long[1000001];
     public static int maxLength;
     public static long maxValue = Long.MIN_VALUE;
 
