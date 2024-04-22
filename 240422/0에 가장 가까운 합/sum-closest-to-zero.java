@@ -11,7 +11,7 @@ public class Main {
             if(i < end){
                 minValue = Math.min(minValue,Math.abs(arr[i]+arr[end]));
             }
-            while(i < end && arr[i] + arr[end]>0){
+            while(i < end-1 && arr[i] + arr[end]>0){
                 minValue = Math.min(minValue,Math.abs(arr[i]+arr[--end]));
             }
         }
