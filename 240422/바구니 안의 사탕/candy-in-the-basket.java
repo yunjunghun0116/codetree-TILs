@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
     public static int[] arr = new int[1000001];
     public static int maxLength;
-    public static int maxValue = Integer.MIN_VALUE;
+    public static long maxValue = Long.MIN_VALUE;
 
     public static void find(){
 
