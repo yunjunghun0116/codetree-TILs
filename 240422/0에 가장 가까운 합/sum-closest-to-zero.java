@@ -8,7 +8,8 @@ public class Main {
         Arrays.sort(arr);
 
         for(int i = 0;i < arr.length; i++){
-            while(end < arr.length && arr[i] + arr[end] < 0){
+            if(end <= i) break;
+            while(i < end && end < arr.length && arr[i] + arr[end] < 0){
                 if(end == arr.length -1){
                     break;
                 }
