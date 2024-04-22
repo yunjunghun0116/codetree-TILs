@@ -2,15 +2,17 @@ import java.util.*;
 
 public class Main {
     public static int[] arr;
-    public static int minValue;
+    public static int minValue = Integer.MAX_VALUE;
     public static void find(){
-        int end = arr.length-1;
+        int end = 0;
         Arrays.sort(arr);
-        minValue = Math.abs(arr[0]+arr[end]);
+
         for(int i = 0;i < arr.length; i++){
-            while(i < end && arr[0]+arr[end]>=0){
-                minValue = Math.min(minValue,Math.abs(arr[i]+arr[end]));
-                end--;
+            while(end < arr.length && arr[i] + arr[end] < 0){
+                if(end == arr.length -1){
+                    break;
+                }
+                minValue = Math.min(minValue,Math.abs(arr[i]+arr[end++]));
             }
             minValue = Math.min(minValue,Math.abs(arr[i]+arr[end]));
         }
