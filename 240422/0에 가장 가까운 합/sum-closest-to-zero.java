@@ -4,7 +4,7 @@ public class Main {
     public static int[] arr;
     public static int minValue = Integer.MAX_VALUE;
     public static void find(){
-        int end = 0;
+        int end = 1;
         Arrays.sort(arr);
 
         for(int i = 0;i < arr.length; i++){
