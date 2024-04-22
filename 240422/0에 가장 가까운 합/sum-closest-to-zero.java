@@ -8,11 +8,11 @@ public class Main {
         Arrays.sort(arr);
 
         for(int i = 0;i < arr.length; i++){
-            while(i < end && arr[i] + arr[end]>0){
-                minValue = Math.min(minValue,Math.abs(arr[i]+arr[--end]));
-            }
             if(i < end){
                 minValue = Math.min(minValue,Math.abs(arr[i]+arr[end]));
+            }
+            while(i < end && arr[i] + arr[end]>0){
+                minValue = Math.min(minValue,Math.abs(arr[i]+arr[--end]));
             }
         }
     }
