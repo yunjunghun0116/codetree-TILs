@@ -10,7 +10,7 @@ public class Main {
         int end = 0;
         int currentSum = 0;
         for(int i = 0; i < arr.length; i++){
-            while(end < arr.length && end+1-i < maxLength){
+            while(end < arr.length && end+1-i <= maxLength){
                 currentSum+=arr[end++];
             }
             
