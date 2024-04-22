@@ -7,14 +7,15 @@ public class Main {
 
     public static void find(){
 
-        int end = 1;
+        int end = 0;
         int currentSum = 0;
         for(int i = 1; i < arr.length; i++){
-            while(end < arr.length && end-i+1 <= maxLength){
-                // System.out.println("start : "+i+", end : "+end);
-                currentSum+=arr[end++];
+            while(end < arr.length && end+1-i < maxLength){
+                if(end == arr.length-1) break;
+                currentSum+=arr[++end];
+                
             }
-            // System.out.println();
+            
             maxValue = Math.max(maxValue, currentSum);
             currentSum -= arr[i];
         }
