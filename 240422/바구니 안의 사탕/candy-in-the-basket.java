@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    public static int[] arr = new int[1000001];
+    public static long[] arr = new int[1000001];
     public static int maxLength;
     public static long maxValue = Long.MIN_VALUE;
 
@@ -11,8 +11,10 @@ public class Main {
         int currentSum = 0;
         for(int i = 1; i < arr.length; i++){
             while(end < arr.length && end-i+1 <= maxLength){
+                // System.out.println("start : "+i+", end : "+end);
                 currentSum+=arr[end++];
             }
+            // System.out.println();
             maxValue = Math.max(maxValue, currentSum);
             currentSum -= arr[i];
         }
@@ -23,7 +25,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String[] input = sc.nextLine().split(" ");
 
-        maxLength = 2*Integer.parseInt(input[1])+1;
+        maxLength = 2 * Integer.parseInt(input[1])+1;
 
         for(int i =0; i<Integer.parseInt(input[0]); i++){
             String[] candy = sc.nextLine().split(" ");
