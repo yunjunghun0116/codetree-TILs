@@ -15,16 +15,20 @@ public class Main {
 
         int maxLength = 0;
         int end = 0;
+
         for(int i = 0; i< str.length(); i++){
             while(end < str.length() && currentDiff <= diffCount){
+                if(currentDiff == diffCount && str.charAt(end) == 0) break;
                 if(arr[getIndex(str.charAt(end))] == 0){
                     currentDiff++;
                 }
                 arr[getIndex(str.charAt(end))] = arr[getIndex(str.charAt(end))]+1;
                 end++;
             }
+            
             maxLength = Math.max(maxLength, end - i);
             arr[getIndex(str.charAt(i))] = arr[getIndex(str.charAt(i))]-1;
+
             if(arr[getIndex(str.charAt(i))] == 0){
                 currentDiff--;
             }
