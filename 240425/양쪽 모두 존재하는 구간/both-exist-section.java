@@ -1,27 +1,30 @@
 import java.util.*;
 
 public class Main {
-    public static int[] arr;
-    public static int number;
-    public static int[] currArr;
-    public static int minLength = Integer.MAX_VALUE;
+    public static int[] arr; // 입력 배열
+    public static int number; // 입력 최대갓값
+    public static int[] countArr; // 최종 갯수
+    
+    public static int minLength = Integer.MAX_VALUE; // 결과
 
     public static void find(){
         int end = 0;
         int currentSize = 0;
+        boolean canUse = false;
+        int[] currCount = new int[number+1];
         for(int i = 0; i < arr.length; i++){
-            while(end < arr.length && currentSize < number){
-                if(currArr[arr[end]] == 0){
+            while(end < arr.length && currentSize < number && countArr[arr[end]]-1> currCount[arr[end]]){
+                if(currCount[arr[end]] == 0){
                     currentSize++;
                 }
-                currArr[arr[end]] = currArr[arr[end]]+1;
+                currCount[arr[end]] = currCount[arr[end]]+1;
                 end++;
             }
-            if(currentSize == number&&check(i, end)){
+            if(currentSize == number){
                  minLength = Math.min(minLength, end-i);
             }
-            currArr[arr[i]] = currArr[arr[i]] -1;
-            if(currArr[arr[i]] == 0){
+            currCount[arr[i]] = currCount[arr[i]] -1;
+            if(currCount[arr[i]] == 0){
                 currentSize --;
             }
         }
@@ -35,28 +38,14 @@ public class Main {
 
         arr = new int[Integer.parseInt(input[0])];
         number = Integer.parseInt(input[1]);
-        currArr = new int[number+1];
-        
+        countArr = new int[number+1];
         for(int i = 0; i < arr.length; i++){
             arr[i] = Integer.parseInt(arrInput[i]);
+            countArr[arr[i]] = countArr[arr[i]]+1;
         }
 
         find();
 
         System.out.println(minLength<Integer.MAX_VALUE?minLength:-1);
-    }
-
-    public static boolean check(int start, int end){
-        int[] currCheckArr = new int[currArr.length];
-        int currentSize = 0;
-        for(int i = 0; i<arr.length; i++){
-            if(currentSize >= number) return true;
-            if( i>=start && i < end) continue;
-            if(currCheckArr[arr[i]] == 0){
-                currentSize++;
-            }
-            currCheckArr[arr[i]] = currCheckArr[arr[i]]+1;
-        }
-        return currentSize >= number;
     }
 }
