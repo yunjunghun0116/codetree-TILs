@@ -18,7 +18,7 @@ public class Main {
 
         for(int i = 0; i< str.length(); i++){
             while(end < str.length() && currentDiff <= diffCount){
-                if(currentDiff == diffCount && str.charAt(end) == 0) break;
+                if(currentDiff == diffCount && arr[getIndex(str.charAt(end))] == 0) break;
                 if(arr[getIndex(str.charAt(end))] == 0){
                     currentDiff++;
                 }
