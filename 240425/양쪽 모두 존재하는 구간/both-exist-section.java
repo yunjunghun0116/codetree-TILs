@@ -50,6 +50,7 @@ public class Main {
         int[] currCheckArr = new int[currArr.length];
         int currentSize = 0;
         for(int i = 0; i<arr.length; i++){
+            if(currentSize >= number) return true;
             if( i>=start && i < end) continue;
             if(currCheckArr[arr[i]] == 0){
                 currentSize++;
