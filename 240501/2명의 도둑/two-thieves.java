@@ -23,7 +23,7 @@ public class Main {
 
     public static void findA(int line,int currIndex,int minIndex,int currWeight, int currValue){
         if(currIndex == n || (minIndex > -1 && currIndex - minIndex >= m)){
-            findB(arr.get(1),0,-1,0,0,currValue);
+            findB(arr.get(1),0,-1,0,0,currValue,minIndex);
             return;
         }
         if(currWeight + board[line][currIndex] > c || visited[line][currIndex] || (minIndex > -1 && currIndex - minIndex >= m)){
@@ -44,13 +44,19 @@ public class Main {
         findA(line,currIndex+1,minIndex,currWeight,currValue);
     }
 
-    public static void findB(int line, int currIndex,int minIndex,int currWeight, int currValue, int aValue){
+    public static void findB(int line, int currIndex,int minIndex,int currWeight, int currValue, int aValue,int aMinIndex){
         if(currIndex == n || (minIndex > -1 && currIndex - minIndex >= m)){
             maxValue = Math.max(maxValue,currValue+aValue);
             return;
         }
+        if(line == arr.get(0) && aMinIndex > -1){
+            if(currIndex >= aMinIndex && currIndex < aMinIndex+m){
+                findB(line,currIndex+1,minIndex,currWeight,currValue,aValue,aMinIndex);
+                return;
+            }
+        }
         if(currWeight + board[line][currIndex] > c || visited[line][currIndex] || (minIndex > -1 && currIndex - minIndex >= m)){
-            findB(line,currIndex+1,minIndex,currWeight,currValue,aValue);
+            findB(line,currIndex+1,minIndex,currWeight,currValue,aValue,aMinIndex);
             return;
         }
         
@@ -59,12 +65,12 @@ public class Main {
         if(minIndex == -1){
             minIndex = currIndex;
         }
-        findB(line,currIndex+1,minIndex,currWeight+board[line][currIndex],currValue+board[line][currIndex]*board[line][currIndex],aValue);
+        findB(line,currIndex+1,minIndex,currWeight+board[line][currIndex],currValue+board[line][currIndex]*board[line][currIndex],aValue,aMinIndex);
         minIndex = preMinIndex;
         visited[line][currIndex] = false;
         
 
-        findB(line,currIndex+1,minIndex,currWeight,currValue,aValue);
+        findB(line,currIndex+1,minIndex,currWeight,currValue,aValue,aMinIndex);
     }
 
 
