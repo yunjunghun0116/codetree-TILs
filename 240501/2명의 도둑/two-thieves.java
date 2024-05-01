@@ -50,11 +50,7 @@ public class Main {
             return;
         }
         if(line == arr.get(0) && aMinIndex > -1){
-            if(currIndex >= aMinIndex && currIndex < aMinIndex+m){
-                findB(line,currIndex+1,minIndex,currWeight,currValue,aValue,aMinIndex);
-                return;
-            }
-            if(minIndex+m >= aMinIndex && minIndex < aMinIndex){
+            if(aMinIndex>= minIndex && aMinIndex <= minIndex +m ){
                 findB(line,currIndex+1,minIndex,currWeight,currValue,aValue,aMinIndex);
                 return;
             }
