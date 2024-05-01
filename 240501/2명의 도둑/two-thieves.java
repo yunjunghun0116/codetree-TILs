@@ -11,7 +11,7 @@ public class Main {
 
     public static void find(int currLen,int preValue){
         if(arr.size() == 2){
-            findA(arr.get(0),0,Integer.MAX_VALUE,0,0);
+            findA(arr.get(0),0,-1,0,0);
             return;
         }
         for(int i = preValue; i < n; i++){
@@ -22,40 +22,45 @@ public class Main {
     }
 
     public static void findA(int line,int currIndex,int minIndex,int currWeight, int currValue){
-        if(currIndex == n){
-            findB(arr.get(1),0,Integer.MAX_VALUE,0,0,currValue);
+        if(currIndex == n || (minIndex > -1 && currIndex - minIndex >= m)){
+            findB(arr.get(1),0,-1,0,0,currValue);
             return;
         }
-        if(currWeight + board[line][currIndex] > c || currIndex - minIndex >= m || visited[line][currIndex]){
-            findA(line,currIndex+1,Math.min(minIndex,currIndex),currWeight,currValue);
+        if(currWeight + board[line][currIndex] > c || visited[line][currIndex] || (minIndex > -1 && currIndex - minIndex >= m)){
+            findA(line,currIndex+1,minIndex,currWeight,currValue);
             return;
         }
         
         visited[line][currIndex] = true;
-        findA(line,currIndex+1,Math.min(minIndex,currIndex),currWeight+board[line][currIndex],currValue+board[line][currIndex]*board[line][currIndex]);
+        if(minIndex == -1){
+            minIndex = currIndex;
+        }
+        findA(line,currIndex+1,minIndex,currWeight+board[line][currIndex],currValue+board[line][currIndex]*board[line][currIndex]);
         visited[line][currIndex] = false;
         
 
-        findA(line,currIndex+1,Math.min(minIndex,currIndex),currWeight,currValue);
+        findA(line,currIndex+1,minIndex,currWeight,currValue);
     }
 
     public static void findB(int line, int currIndex,int minIndex,int currWeight, int currValue, int aValue){
-        if(currIndex == n){
-        
+        if(currIndex == n || (minIndex > -1 && currIndex - minIndex >= m)){
             maxValue = Math.max(maxValue,currValue+aValue);
             return;
         }
-        if(currWeight + board[line][currIndex] > c || currIndex - minIndex >= m  || visited[line][currIndex]){
-            findB(line,currIndex+1,Math.min(minIndex,currIndex),currWeight,currValue,aValue);
+        if(currWeight + board[line][currIndex] > c || visited[line][currIndex] || (minIndex > -1 && currIndex - minIndex >= m)){
+            findB(line,currIndex+1,minIndex,currWeight,currValue,aValue);
             return;
         }
-    
+        
         visited[line][currIndex] = true;
-        findB(line,currIndex+1,Math.min(minIndex,currIndex),currWeight+board[line][currIndex],currValue+board[line][currIndex]*board[line][currIndex],aValue);
+        if(minIndex == -1){
+            minIndex = currIndex;
+        }
+        findB(line,currIndex+1,minIndex,currWeight+board[line][currIndex],currValue+board[line][currIndex]*board[line][currIndex],aValue);
         visited[line][currIndex] = false;
+        
 
-
-        findB(line,currIndex+1,Math.min(minIndex,currIndex),currWeight,currValue,aValue);
+        findB(line,currIndex+1,minIndex,currWeight,currValue,aValue);
     }
 
 
