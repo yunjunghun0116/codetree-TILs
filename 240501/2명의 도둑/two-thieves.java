@@ -9,14 +9,14 @@ public class Main {
     public static int maxValue = Integer.MIN_VALUE;
     public static List<Integer> arr = new ArrayList<>();
 
-    public static void find(int currLen,int preValue){
+    public static void find(int preValue){
         if(arr.size() == 2){
             findA(arr.get(0),0,-1,0,0);
             return;
         }
         for(int i = preValue; i < n; i++){
             arr.add(i);
-            find(currLen,i);
+            find(i);
             arr.remove(arr.size()-1);
         }
     }
@@ -32,10 +32,12 @@ public class Main {
         }
         
         visited[line][currIndex] = true;
+        int preMinIndex = minIndex;
         if(minIndex == -1){
             minIndex = currIndex;
         }
         findA(line,currIndex+1,minIndex,currWeight+board[line][currIndex],currValue+board[line][currIndex]*board[line][currIndex]);
+        minIndex = preMinIndex;
         visited[line][currIndex] = false;
         
 
@@ -53,10 +55,12 @@ public class Main {
         }
         
         visited[line][currIndex] = true;
+        int preMinIndex = minIndex;
         if(minIndex == -1){
             minIndex = currIndex;
         }
         findB(line,currIndex+1,minIndex,currWeight+board[line][currIndex],currValue+board[line][currIndex]*board[line][currIndex],aValue);
+        minIndex = preMinIndex;
         visited[line][currIndex] = false;
         
 
@@ -83,7 +87,7 @@ public class Main {
             }
         }
 
-        find(0,0);
+        find(0);
 
         System.out.println(maxValue);
 
