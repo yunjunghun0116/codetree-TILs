@@ -33,7 +33,7 @@ public class Main {
         // n = 3 => 001122 012210
         Scanner sc = new Scanner(System.in);
         String[] input = sc.nextLine().split(" ");
-        m = Integer.parseInt(input[1]);
+        m = Integer.parseInt(input[1])-1;
         arr = new int[Integer.parseInt(input[0])];
         k = Integer.parseInt(input[2]);
 
