@@ -31,17 +31,11 @@ public class Main {
         }
     }
     public static boolean check(){
-        for(int i = arr.size()-2; i >= 0; i--){
-            if(arr.get(i) == arr.get(arr.size()-1)){
-                int start = i+1;
-                int end = arr.size()-1;
-                int length = end - start + 1;
-                int firstCheck = start-length;
-                if(firstCheck < 0) return true;
-                for(int j = firstCheck; j < start; j++){
-                    if(arr.get(j) != arr.get(j+length)) return true;
-                }
-                return false;
+        int maxCheckLength = arr.size()/2;
+        for(int i = 1; i <= maxCheckLength; i++){
+            for(int j = arr.size()-1-i; j > arr.size()-1-2*i; j--){
+                if(arr.get(j)!=arr.get(j+i)) break;
+                if(j == arr.size()-2*i) return false;
             }
         }
         return true;
