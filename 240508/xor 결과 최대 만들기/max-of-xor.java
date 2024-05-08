@@ -8,20 +8,18 @@ public class Main {
 
     public static int maxValue = Integer.MIN_VALUE;
 
-    public static void find(int currIndex){
+    public static void find(int currIndex,int currValue){
+        if(currIndex >= n) return;
         if(list.size() == m){
-            int value = 0;
-            for(int i = 0; i < m; i++){
-                value = value ^ arr[list.get(i)];
-            }
-            maxValue = Math.max(maxValue,value);
+            maxValue = Math.max(maxValue,currValue);
             return;
         }
-        for(int i = currIndex; i <n; i++){
-            list.add(i);
-            find(currIndex+1);
-            list.remove(list.size()-1);
-        }
+        list.add(currIndex);
+        find(currIndex+1,currValue^arr[currIndex]);
+        list.remove(list.size()-1);
+
+        find(currIndex+1,currValue);
+        
     }
 
     public static void main(String[] args) {
@@ -37,7 +35,7 @@ public class Main {
             arr[i] = Integer.parseInt(arrInput[i]);
         }
 
-        find(0);
+        find(0,0);
 
         System.out.println(maxValue);
     }
