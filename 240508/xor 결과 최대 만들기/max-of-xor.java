@@ -9,11 +9,11 @@ public class Main {
     public static int maxValue = Integer.MIN_VALUE;
 
     public static void find(int currIndex,int currValue){
-        if(currIndex >= n) return;
         if(list.size() == m){
             maxValue = Math.max(maxValue,currValue);
             return;
         }
+        if(currIndex >= n) return;
         list.add(currIndex);
         find(currIndex+1,currValue^arr[currIndex]);
         list.remove(list.size()-1);
