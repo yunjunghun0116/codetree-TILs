@@ -39,10 +39,11 @@ public class Main {
 
         find(0,0);
 
-        System.out.println(minMove);
+        System.out.println(minMove<Integer.MAX_VALUE?minMove:-1);
     }
 
     public static void find(int currLength,int currIndex){
+        if(pointList.size()<3) return;
         if(currLength == 3){
             int moveCount = 0;
             moveCount += move(start, pointMap.get(pointList.get(list.get(0))));
