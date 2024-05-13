@@ -32,7 +32,7 @@ public class Main {
             int nextI = x + dx[i];
             int nextJ = y + dy[i];
             if(nextI >= board.length || nextJ >= board[0].length || visited[nextI][nextJ]) continue;
-            if(board[nextI][nextJ] == 0) return;
+            if(board[nextI][nextJ] == 0) continue;
             visited[nextI][nextJ] = true;
             dfs(nextI,nextJ);
         }
