@@ -6,7 +6,7 @@ public class Main {
     public static int[] dx = {1,0,-1,0};
     public static int[] dy = {0,-1,0,1};
     public static List<Integer> village = new ArrayList<>();
-
+    public static int count = 0;
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
@@ -19,7 +19,6 @@ public class Main {
             String[] arrInput = sc.nextLine().split(" ");
             for(int j = 0; j < size; j++){
                 board[i][j] = Integer.parseInt(arrInput[j]);
-                
             }
         }
 
@@ -27,8 +26,9 @@ public class Main {
 
         System.out.println(village.size());
         Collections.sort(village);
-        for(int i = 0; i < village.size(); i++){
-            System.out.println(village.get(i));
+        
+        for(int i: village){
+            System.out.println(i);
         }
     }
 
@@ -36,32 +36,26 @@ public class Main {
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board.length; j++){
                 if(board[i][j] == 1 && !visited[i][j]){
-                    int size = dfs(i,j);
-                    village.add(size);
+                    dfs(i,j);
+                    village.add(count);
+                    count = 0;
                 }
             }
         }
     }
-    public static int dfs(int x,int y){
-        Stack<int[]> stack = new Stack<>();
-        stack.push(new int[]{x,y});
-        visited[x][y] = true;
-        int size = 0;
+    public static void dfs(int x,int y){
 
-        while(!stack.isEmpty()){
-            int[] point = stack.pop();
-            size++;
-            for(int i = 0; i < 4; i++){
-                int nextI = point[0] + dx[i];
-                int nextJ = point[1] + dy[i];
-                if(canGo(nextI,nextJ)){
-                    visited[nextI][nextJ] = true;
-                    stack.push(new int[]{nextI,nextJ});
-                }
+        visited[x][y] = true;
+        count++;
+
+        for(int i = 0; i < 4; i++){
+            int nextI = x + dx[i];
+            int nextJ = y + dy[i];
+            if(canGo(nextI,nextJ)){
+                dfs(nextI,nextJ);
             }
         }
-
-        return size;
+        
     }
     public static boolean canGo(int x,int y){
         if(x < 0 || x >= board.length || y < 0 || y >= board.length) return false;
