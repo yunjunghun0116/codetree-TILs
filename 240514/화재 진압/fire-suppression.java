@@ -38,7 +38,7 @@ public class Main {
             // i : 불의 위치
             // end : 소방서 위치
             while(end < stations.length ){
-                if(end > 0 && Math.abs(stations[end]-fires[i])>Math.abs(stations[end-1]-fires[i])){
+                if(end > 0 && Math.abs(stations[end]-fires[i])>=Math.abs(stations[end-1]-fires[i])){
                     break;
                 }
                 if(end == stations.length -1) break;
