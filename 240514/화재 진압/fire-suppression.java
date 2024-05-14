@@ -37,13 +37,8 @@ public class Main {
         for(int i = 0; i < fires.length; i++){
             // i : 불의 위치
             // end : 소방서 위치
-            while(end < stations.length ){
-                if(end == stations.length -1) break;
-                if(Math.abs(stations[end]-fires[i])>Math.abs(stations[end+1]-fires[i])){
-                    end++;
-                    continue;
-                }
-                break;
+            while(end < stations.length -1 && Math.abs(stations[end]-fires[i])>Math.abs(stations[end+1]-fires[i])){
+                end++;
             }
             maxLength = Math.max(maxLength, Math.abs(stations[end]-fires[i]));
         }
