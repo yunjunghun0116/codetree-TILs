@@ -50,7 +50,8 @@ public class Main {
         int currMaxY = maxY[end];
 
         for(int i = 0; i < list.size()-1; i++){
-            while(end < list.size()-1){
+            while(end < list.size()){
+                if(end == list.size()-1) break;
                 end++;
                 currMinY = Math.min(currMinY,minY[end]);
                 currMaxY = Math.max(currMaxY,maxY[end]);
