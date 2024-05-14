@@ -57,14 +57,13 @@ public class Main {
             }
             if(end == list.size()) break;
 
-            if(!needFind(currMinY,currMaxY,list.get(end))){
-                minLength = Math.min(minLength,Math.abs(list.get(end) - list.get(i)));
-            }
+            minLength = Math.min(minLength,Math.abs(list.get(end) - list.get(i)));
 
             currMinY = findMinValue(i,end);
             currMaxY = findMaxValue(i,end);
         }
         if(minLength == Integer.MAX_VALUE) return -1;
+
         return minLength;
     }
     public static int findMaxValue(int start,int end){
