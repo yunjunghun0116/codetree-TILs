@@ -60,9 +60,12 @@ public class Main {
             if(end == list.size()) break;
 
             minLength = Math.min(minLength,Math.abs(list.get(end) - list.get(i)));
-
-            currMinY = findMinValue(i,end);
-            currMaxY = findMaxValue(i,end);
+            if(minY[list.get(i)] == currMinY){
+                currMinY = findMinValue(i,end);
+            }
+            if(maxY[list.get(i)] == currMaxY){
+                currMaxY = findMaxValue(i,end);
+            }
         }
         if(minLength == Integer.MAX_VALUE) return -1;
 
