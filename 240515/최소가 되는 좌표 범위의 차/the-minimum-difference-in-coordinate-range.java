@@ -31,12 +31,14 @@ public class Main {
             if(maxY[x] == 0){
                 maxY[x] = y;
             }else{
-                maxY[x] = Math.min(maxY[x],y);
+                maxY[x] = Math.max(maxY[x],y);
             }
         }
 
-        list = getXList();
+    
 
+        list = getXList();
+        
         int result = find();
 
         System.out.println(result);
