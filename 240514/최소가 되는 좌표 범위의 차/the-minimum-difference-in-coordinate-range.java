@@ -46,20 +46,19 @@ public class Main {
        
         int end = 0;
 
-        int currMinY = minY[end];
-        int currMaxY = maxY[end];
+        int currMinY = Integer.MAX_VALUE;
+        int currMaxY = Integer.MIN_VALUE;
 
         for(int i = 0; i < list.size()-1; i++){
             while(end < list.size()){
                 if(end == list.size()-1) break;
-                end++;
                 currMinY = Math.min(currMinY,minY[end]);
                 currMaxY = Math.max(currMaxY,maxY[end]);
                 if(!needFind(currMinY,currMaxY,list.get(end))){
                     minLength = Math.min(minLength,Math.abs(list.get(end) - list.get(i)));
                     break;
                 }
-                
+                end++;
             }
             if(!needFind(currMinY,currMaxY,list.get(end))){
                 minLength = Math.min(minLength,list.get(end) - list.get(i));
