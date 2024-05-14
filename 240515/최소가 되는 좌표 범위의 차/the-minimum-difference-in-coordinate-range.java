@@ -58,7 +58,6 @@ public class Main {
             if(end == list.size()) break;
             if(!needFind(currMinY,currMaxY,list.get(end))){
                 minLength = Math.min(minLength,Math.abs(list.get(end) - list.get(i)));
-                System.out.println("start : "+i+", end : "+end+", length : "+minLength);
             }
             if(minY[i] == currMinY){
                 currMinY = findMinValue(i,end);
