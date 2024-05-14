@@ -46,8 +46,8 @@ public class Main {
        
         int end = 0;
 
-        int currMinY = minY[list.get(0)];
-        int currMaxY = minY[list.get(0)];
+        int currMinY = Integer.MAX_VALUE;
+        int currMaxY = Integer.MIN_VALUE;
 
         for(int i = 0; i < list.size(); i++){
             while(end < list.size() && needFind(currMinY,currMaxY,list.get(end))){
@@ -55,18 +55,14 @@ public class Main {
                 currMaxY = Math.max(currMaxY,maxY[list.get(end)]);
                 end++;
             }
-            if(end == list.size() || i > end) break;
+            if(end == list.size()) break;
+
             if(!needFind(currMinY,currMaxY,list.get(end))){
                 minLength = Math.min(minLength,Math.abs(list.get(end) - list.get(i)));
-                //System.out.println("start : "+i+", end : "+end+", length : "+minLength);
             }
 
-            if(minY[i] == currMinY){
-                currMinY = findMinValue(i,end);
-            }
-            if(maxY[i] == currMaxY){
-                currMaxY = findMaxValue(i,end);
-            }
+            currMinY = findMinValue(i,end);
+            currMaxY = findMaxValue(i,end);
         }
         if(minLength == Integer.MAX_VALUE) return -1;
         return minLength;
@@ -101,6 +97,7 @@ public class Main {
 
         if(Math.abs(minValue - maxY[x]) >= d) return false;
         if(Math.abs(maxValue - minY[x]) >= d) return false;
+        if(Math.abs(maxY[x]-minY[x])>= d) return false;
         return true;
     }
 }
