@@ -76,7 +76,7 @@ public class Main {
     public static int findMinValue(int start,int end){
         int minValue = Integer.MAX_VALUE;
         for(int i = start+1; i <= end; i++){
-            minValue = Math.max(minY[list.get(i)],minValue);
+            minValue = Math.min(minY[list.get(i)],minValue);
         }
         return minValue;
     }
@@ -86,9 +86,7 @@ public class Main {
         for(int i : xSet){
             xList.add(i);
         }
-
         Collections.sort(xList);
-
         return xList;
     }
     public static boolean needFind(int minValue,int maxValue,int x){
