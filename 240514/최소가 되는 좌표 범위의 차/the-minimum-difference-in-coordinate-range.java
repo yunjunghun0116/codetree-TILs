@@ -74,14 +74,14 @@ public class Main {
     }
     public static int findMaxValue(int start,int end){
         int maxValue = Integer.MIN_VALUE;
-        for(int i = start; i < end; i++){
+        for(int i = start; i <= end; i++){
             maxValue = Math.max(maxY[list.get(i)],maxValue);
         }
         return maxValue;
     }
     public static int findMinValue(int start,int end){
         int minValue = Integer.MAX_VALUE;
-        for(int i = start; i < end; i++){
+        for(int i = start; i <= end; i++){
             minValue = Math.max(minY[list.get(i)],minValue);
         }
         return minValue;
