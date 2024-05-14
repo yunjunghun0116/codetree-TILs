@@ -49,10 +49,9 @@ public class Main {
         int minLength = Integer.MAX_VALUE;
 
         for(int i = 0; i < list.size(); i++){
-            while(end < list.size() && needFind(list.get(i),list.get(end))){
+            while(end < list.size()-1 && needFind(list.get(i),list.get(end))){
                 end++;
             }
-            if(end == list.size()) break;
             if(!needFind(list.get(i),list.get(end))){
                 minLength = Math.min(minLength, list.get(end) - list.get(i));
             }
