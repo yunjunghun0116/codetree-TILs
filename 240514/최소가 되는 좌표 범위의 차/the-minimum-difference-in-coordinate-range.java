@@ -1,9 +1,10 @@
 import java.util.*;
 
 public class Main {
-    public static int minLength = Integer.MIN_VALUE;
+    public static int minLength = Integer.MAX_VALUE;
     public static int d;
     public static Set<Integer> xSet = new HashSet<>();
+    public static List<Integer> list;
 
     public static int[] minY = new int[1000001];
     public static int[] maxY = new int[1000001];
@@ -34,35 +35,72 @@ public class Main {
             }
         }
 
+        list = getXList();
+
         int result = find();
+
         System.out.println(result);
     }
 
     public static int find(){
-        List<Integer> list = new ArrayList<>();
-        for(int i : xSet){
-            list.add(i);
-        }
-
-        Collections.sort(list);
+       
         int end = 0;
-        int minLength = Integer.MAX_VALUE;
 
-        for(int i = 0; i < list.size(); i++){
-            while(end < list.size()-1 && needFind(list.get(i),list.get(end))){
+        int currMinY = minY[end];
+        int currMaxY = maxY[end];
+
+        for(int i = 0; i < list.size()-1; i++){
+            while(end < list.size()-1){
                 end++;
+                currMinY = Math.min(currMinY,minY[end]);
+                currMaxY = Math.max(currMaxY,maxY[end]);
+                if(!needFind(currMinY,currMaxY,list.get(end))){
+                    minLength = Math.min(minLength,Math.abs(list.get(end) - list.get(i)));
+                    break;
+                }
+                
             }
-            if(!needFind(list.get(i),list.get(end))){
-                minLength = Math.min(minLength, list.get(end) - list.get(i));
+            if(!needFind(currMinY,currMaxY,list.get(end))){
+                minLength = Math.min(minLength,Math.abs(list.get(end) - list.get(i)));
+            }
+            if(minY[i] == currMinY){
+                currMinY = findMinValue(i+1,end);
+            }
+            if(maxY[i] == currMaxY){
+                currMaxY = findMaxValue(i+1,end);
             }
         }
-        if( minLength == Integer.MAX_VALUE) return -1;
+        if(minLength == Integer.MAX_VALUE) return -1;
         return minLength;
     }
+    public static int findMaxValue(int start,int end){
+        int maxValue = Integer.MIN_VALUE;
+        for(int i = start; i < end; i++){
+            maxValue = Math.max(maxY[list.get(i)],maxValue);
+        }
+        return maxValue;
+    }
+    public static int findMinValue(int start,int end){
+        int minValue = Integer.MAX_VALUE;
+        for(int i = start; i < end; i++){
+            minValue = Math.max(minY[list.get(i)],minValue);
+        }
+        return minValue;
+    }
 
-    public static boolean needFind(int a,int b){
-        if(Math.abs(minY[a] - maxY[b]) >= d) return false;
-        if(Math.abs(minY[b] - maxY[a]) >= d) return false;
+    public static List<Integer> getXList(){
+        List<Integer> xList = new ArrayList<>();
+        for(int i : xSet){
+            xList.add(i);
+        }
+
+        Collections.sort(xList);
+
+        return xList;
+    }
+    public static boolean needFind(int minValue,int maxValue,int x){
+        if(Math.abs(minValue - maxY[x]) >= d) return false;
+        if(Math.abs(maxValue - minY[x]) >= d) return false;
         return true;
     }
 }
