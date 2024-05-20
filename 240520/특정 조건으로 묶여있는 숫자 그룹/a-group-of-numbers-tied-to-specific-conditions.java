@@ -39,22 +39,25 @@ public class Main {
     }
     public static int getResult(){
         Collections.sort(list,(a,b)->b[2]-a[2]);
-        int[] maxResult = list.get(0);
-        int[] secondResult = new int[0];
-        for(int i = 1; i < list.size(); i++){
-            int[] data = list.get(i);
-            if(maxResult[1]<data[0]){
-                secondResult = data;
-                break;
-            }
-            if(maxResult[0]>data[1]){
-                secondResult = data;
-                break;
+        // 정렬된 값에 대해서 두개의 값을 고르기
+        int maxValue = Integer.MIN_VALUE;
+        for(int i = 0; i < list.size(); i++){
+            int[] numberInfo = list.get(i);
+            for(int j = i+1; j < list.size(); j++){
+                int[] number2Info = list.get(j);
+                if(numberInfo[0] > number2Info[1]){
+                    maxValue = Math.max(maxValue,numberInfo[2]+number2Info[2]);
+                    break;
+                }
+                if(numberInfo[1] < number2Info[0]){
+                    maxValue = Math.max(maxValue,numberInfo[2]+number2Info[2]);
+                    break;
+                }
             }
         }
-        if(secondResult.length==0){
-            return maxResult[2];
+        if(maxValue == Integer.MIN_VALUE){
+            return list.get(0)[2];
         }
-        return maxResult[2]+secondResult[2];
+        return maxValue;
     }
 }
