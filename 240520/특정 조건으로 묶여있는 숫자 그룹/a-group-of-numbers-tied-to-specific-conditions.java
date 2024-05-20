@@ -20,7 +20,22 @@ public class Main {
             max = Math.max(max,maxL[i]+maxR[i+1]);
         }
 
+        // print();        
         System.out.println(max);
+    }
+    public static void print(){
+        for(int i = 0; i < arr.length; i++){
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+        for(int i = 0; i < arr.length; i++){
+            System.out.print(maxL[i]+" ");
+        }
+        System.out.println();
+        for(int i = 0; i < arr.length; i++){
+            System.out.print(maxR[i]+" ");
+        }
+        System.out.println();
     }
     public static void setData(){
         Scanner sc = new Scanner(System.in);
@@ -75,14 +90,14 @@ public class Main {
     }
 
     public static void getResultL(){
-        int end = 0;
+        int start = 0;
         int maxCount = 0;
-        for(int i = 0; i < arr.length; i++){
-            while(end < arr.length && arr[end] - arr[i] <= k){
-                end++;
+        for(int end = 0; end < arr.length; end++){
+            while(start < arr.length && arr[end] - arr[start] > k){
+                start++;
             }
-            maxCount = Math.max(maxCount, end-i);
-            maxL[i] = maxCount;
+            maxCount = Math.max(maxCount, end-start+1);
+            maxL[end] = maxCount;
         }
     }
     public static void getResultR(){
