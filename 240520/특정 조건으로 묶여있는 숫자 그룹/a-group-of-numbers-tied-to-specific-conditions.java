@@ -3,13 +3,24 @@ import java.util.*;
 public class Main {
     public static int k;
     public static int[] arr;
+    public static int[] maxL;
+    public static int[] maxR;
     public static List<int[]> list = new ArrayList<>();
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         setData();
         find();
-        int result = getResult();
-        System.out.println(result);
+        // int result = getResult();
+        // System.out.println(result);
+        getResultL();
+        getResultR();
+
+        int max = maxL[arr.length-1];
+        for(int i = 0; i < arr.length-1; i++){
+            max = Math.max(max,maxL[i]+maxR[i+1]);
+        }
+
+        System.out.println(max);
     }
     public static void setData(){
         Scanner sc = new Scanner(System.in);
@@ -18,6 +29,8 @@ public class Main {
         k = Integer.parseInt(input[1]);
 
         arr = new int[n];
+        maxL = new int[n];
+        maxR = new int[n];
 
         for(int i = 0; i < n; i++){
             arr[i] = Integer.parseInt(sc.nextLine());
@@ -59,5 +72,28 @@ public class Main {
             return list.get(0)[2];
         }
         return maxValue;
+    }
+
+    public static void getResultL(){
+        int end = 0;
+        int maxCount = 0;
+        for(int i = 0; i < arr.length; i++){
+            while(end < arr.length && arr[end] - arr[i] <= k){
+                end++;
+            }
+            maxCount = Math.max(maxCount, end-i);
+            maxL[i] = maxCount;
+        }
+    }
+    public static void getResultR(){
+        int right = arr.length-1;
+        int maxCount = 0;
+        for(int left = arr.length-1; left >= 0; left--){
+            while(right >= 0 && arr[right]-arr[left]>k){
+                right--;
+            }
+            maxCount = Math.max(maxCount,right-left+1);
+            maxR[left] = maxCount;
+        }
     }
 }
