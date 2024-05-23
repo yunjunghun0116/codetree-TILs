@@ -9,7 +9,7 @@ public class Main {
         square[1] = 1;
         square[2] = 3;
         for(int i =3; i < 1001; i++){
-            square[i] = square[i-1]+ square[i-2]*2;
+            square[i] = (square[i-1]+ square[i-2]*2)%10007;
         }
 
         int n = Integer.parseInt(sc.nextLine());
