@@ -11,9 +11,9 @@ public class Main {
         stairs[2] = 1;
         stairs[3] = 1;
         for(int i = 4; i < 1001; i++){
-            stairs[i] = stairs[i-3]+stairs[i-2];
+            stairs[i] = (stairs[i-3]+stairs[i-2])%10007;
         }
 
-        System.out.println(stairs[n]%10007);
+        System.out.println(stairs[n]);
     }
 }
