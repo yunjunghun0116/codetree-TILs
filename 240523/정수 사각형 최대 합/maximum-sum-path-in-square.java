@@ -22,8 +22,6 @@ public class Main {
                 board[i][j] = Integer.parseInt(boardInput[j]);
             }
         }
-
-        sum[0][0] = board[0][0];
     }
     public static void find(){
         for(int i = 0; i < board.length; i++){
