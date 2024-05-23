@@ -25,14 +25,11 @@ public class Main {
 
     public static int find(){
         int[] dp = new int[findCoin+1];
-    
+        Arrays.fill(dp,Integer.MAX_VALUE);
+        dp[0] = 0;
         for(int i = 1; i <= findCoin; i++){
             for(int j = 0; j < coinCount; j++){
                 if(i < coins[j]) continue;
-                if(dp[i] == 0){
-                    dp[i] = dp[i-coins[j]] + 1;
-                    continue;
-                }
                 dp[i] = Math.min(dp[i],dp[i - coins[j]]+1);
                 
             }
