@@ -28,14 +28,14 @@ public class Main {
         int[] dx = {1, 0, -1, 0};
         int[] dy = {0, -1, 0, 1};
 
-        Stack<int[]> positionStack = new Stack<>();
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b)->board[a[0]][a[1]]-board[b[0]][b[1]]);
 
         for(int i = 0; i < n ; i++){
             for(int j = 0; j < n; j++){
                 if(maxBoard[i][j] != 0) continue;
-                positionStack.push(new int[]{i, j, 1});
-                while(!positionStack.isEmpty()){
-                    int[] position = positionStack.pop();
+                pq.add(new int[]{i, j, 1});
+                while(!pq.isEmpty()){
+                    int[] position = pq.poll();
                     maxBoard[position[0]][position[1]] = position[2];
                     maxCount = Math.max(maxCount,position[2]);
                     for(int k = 0; k < 4; k++){
@@ -44,7 +44,7 @@ public class Main {
                         if(position[2]+1 <= maxBoard[i][j]) continue;
                         if(nextI < 0 || nextI >= n || nextJ < 0 || nextJ >= n) continue;
                         if(board[nextI][nextJ] <= board[position[0]][position[1]]) continue;
-                        positionStack.add(new int[]{nextI,nextJ,position[2]+1});
+                        pq.add(new int[]{nextI,nextJ,position[2]+1});
                     }
                 }
                 
