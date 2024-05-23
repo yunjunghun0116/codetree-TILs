@@ -5,7 +5,7 @@ public class Main {
     public static int[][] board;
     public static int[][] maxBoard;
     public static int maxCount = 0;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         // 여기에 코드를 작성해주세요.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
