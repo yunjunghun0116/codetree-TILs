@@ -32,7 +32,7 @@ public class Main {
                     sum[i][j] = sum[i-1][j]+board[i][j];
                     continue;
                 }
-                sum[i][j] = Math.max(sum[i-1][j],sum[i][j-1])+board[i][j];
+                sum[i][j] = Math.max(sum[i-1][j-1],sum[i][j-1])+board[i][j];
             }
         }
     }
