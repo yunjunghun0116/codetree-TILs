@@ -20,28 +20,22 @@ public class Main {
             }
         }
 
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                maxBoard[i][j] = 1;
-            }
-        }
-
         find();
 
-        System.out.println(maxCount);
+        System.out.println(maxCount+1);
     }
     public static void find(){
         int[] dx = {1, 0, -1, 0};
         int[] dy = {0, -1, 0, 1};
 
-        Queue<int[]> positionQueue = new LinkedList<>();
+        Stack<int[]> positionStack = new Stack<>();
 
         for(int i = 0; i < n ; i++){
             for(int j = 0; j < n; j++){
-                if(maxBoard[i][j] != 1) continue;
-                positionQueue.add(new int[]{i, j, 1});
-                while(!positionQueue.isEmpty()){
-                    int[] position = positionQueue.poll();
+                if(maxBoard[i][j] != 0) continue;
+                positionStack.push(new int[]{i, j, 0});
+                while(!positionStack.isEmpty()){
+                    int[] position = positionStack.pop();
                     maxCount = Math.max(maxCount,position[2]);
                     for(int k = 0; k < 4; k++){
                         int nextI = position[0]+dy[k];
@@ -49,7 +43,7 @@ public class Main {
                         if(position[2]+1 <= maxBoard[i][j]) continue;
                         if(nextI < 0 || nextI >= n || nextJ < 0 || nextJ >= n) continue;
                         if(board[nextI][nextJ] <= board[position[0]][position[1]]) continue;
-                        positionQueue.add(new int[]{nextI,nextJ,position[2]+1});
+                        positionStack.push(new int[]{nextI,nextJ,position[2]+1});
                     }
                 }
                 
