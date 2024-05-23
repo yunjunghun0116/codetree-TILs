@@ -20,7 +20,7 @@ public class Main {
 
         int result = find();
 
-        System.out.println(result == 0 ? -1 : result);
+        System.out.println(result == Integer.MAX_VALUE ? -1 : result);
     }
 
     public static int find(){
