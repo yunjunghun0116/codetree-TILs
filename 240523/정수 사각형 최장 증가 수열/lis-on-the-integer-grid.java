@@ -20,13 +20,13 @@ public class Main {
             String[] boardInput = sc.nextLine().split(" ");
             for(int j = 0; j < n; j++){
                 board[i][j] = Integer.parseInt(boardInput[j]);
-                pq.add(new int[]{i, j, 1});
+                pq.add(new int[]{i, j});
             }
         }
 
         find();
 
-        System.out.println(maxCount);
+        System.out.println(maxCount+1);
     }
     public static void find(){
         int[] dx = {1, 0, -1, 0};
@@ -34,15 +34,13 @@ public class Main {
         
         while(!pq.isEmpty()){
             int[] position = pq.poll();
-            maxBoard[position[0]][position[1]] = position[2];
-            maxCount = Math.max(maxCount,position[2]);
+            maxCount = Math.max(maxCount,maxBoard[position[0]][position[1]]);
             for(int k = 0; k < 4; k++){
                 int nextI = position[0]+dy[k];
                 int nextJ = position[1]+dx[k];
-                if(position[2]+1 <= maxBoard[position[0]][position[1]]) continue;
                 if(nextI < 0 || nextI >= n || nextJ < 0 || nextJ >= n) continue;
                 if(board[nextI][nextJ] <= board[position[0]][position[1]]) continue;
-                pq.add(new int[]{nextI,nextJ,position[2]+1});
+                maxBoard[nextI][nextJ] = Math.max(maxBoard[nextI][nextJ],maxBoard[position[0]][position[1]]+1);
             }
         }
     }
