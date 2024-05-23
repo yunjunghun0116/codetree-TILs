@@ -7,11 +7,11 @@ public class Main {
         Scanner sc =new Scanner(System.in);
         int n = Integer.parseInt(sc.nextLine());
 
-        square[0] = 0;
+        square[0] = 1;
         square[1] = 2;
         square[2] = 7;
         for(int i = 3; i < 1001; i++){
-            square[i] = (square[i-1]*2+square[i-2]*3)%1000000007;
+            square[i] = (square[i-1]*2+square[i-2]*3+square[i-3]*2)%1000000007;
         }
 
         System.out.println(square[n]);
