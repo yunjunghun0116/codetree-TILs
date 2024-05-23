@@ -10,8 +10,9 @@ public class Main {
         square[0] = 1;
         square[1] = 2;
         square[2] = 7;
-        for(int i = 3; i < 1001; i++){
-            square[i] = (square[i-1]*2+square[i-2]*3+square[i-3]*2)%1000000007;
+        square[3] = 22;
+        for(int i = 4; i < 1001; i++){
+            square[i] = (square[i-1]*2+square[i-2]*3+square[i-3]*2+square[i-4]*2)%1000000007;
         }
 
         System.out.println(square[n]);
