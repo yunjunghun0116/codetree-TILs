@@ -13,7 +13,7 @@ public class Main {
         square[2] = 2;
         square[3] = 3;
         for(int i = 4; i < 1001; i++){
-            square[i] = (square[i-1]+square[i-2]*2)%10007;
+            square[i] = (square[i-1]+square[i-2])%10007;
         }
 
         System.out.println(square[n]);
