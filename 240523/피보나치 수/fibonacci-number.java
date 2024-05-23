@@ -12,6 +12,6 @@ public class Main {
             fib[i] = fib[i-1]+fib[i-2];
         }
 
-        System.out.pritnln(fib[n-1]);
+        System.out.println(fib[n-1]);
     }
 }
