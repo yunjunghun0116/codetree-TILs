@@ -31,6 +31,7 @@ public class Main {
         for(int i = 1; i <= m; i++){
             for(int j = 0; j < n; j++){
                 if(i < num[j]) continue;
+                if(dp[i-num[j]] == Integer.MIN_VALUE) continue;
                 dp[i] = Math.max(dp[i],dp[i-num[j]]+1);
             }
         }
