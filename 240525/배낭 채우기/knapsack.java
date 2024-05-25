@@ -31,7 +31,7 @@ public class Main {
                     dp[i][j] = jewelry[1];
                     continue;
                 }
-                dp[i][j] = Math.max(dp[i-1][j-jewelry[0]]+jewelry[1],dp[i][j-1]);
+                dp[i][j] = Math.max(dp[i-1][j-jewelry[0]]+jewelry[1],dp[i-1][j]);
             }
         }
     }
