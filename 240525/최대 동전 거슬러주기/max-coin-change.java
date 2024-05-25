@@ -22,9 +22,12 @@ public class Main {
 
         find();
 
-        System.out.println(dp[m]==0?-1:dp[m]);
+        System.out.println(dp[m]==Integer.MIN_VALUE?-1:dp[m]);
     }
     public static void find(){
+
+        Arrays.fill(dp,Integer.MIN_VALUE);
+        dp[0] = 0;
         for(int i = 1; i <= m; i++){
             for(int j = 0; j < n; j++){
                 if(i < num[j]) continue;
