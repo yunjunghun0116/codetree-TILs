@@ -48,18 +48,23 @@ public class Main {
         System.out.println(cnt);
     }
     public static void nextTime(){
-        int[][] newBalls = new int[n][n];
+        removeDuplicated();
+        
+        List<int[]> nextPosList = new ArrayList<>();
 
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 if(balls[i][j] == 1){
+                    balls[i][j] = 0;
                     int[] nextPos = findNextPosition(i,j); 
-                    newBalls[nextPos[0]][nextPos[1]] = newBalls[nextPos[0]][nextPos[1]]+1;
+                    nextPosList.add(nextPos);
                 }
             }
         }
-
-        balls = newBalls;
+        
+        for(int[] nextPos : nextPosList){
+            balls[nextPos[0]][nextPos[1]] = balls[nextPos[0]][nextPos[1]] + 1;
+        }
     }
     public static int[] findNextPosition(int i, int j){
         int[] dy = {-1,1,0,0};
@@ -79,5 +84,15 @@ public class Main {
         }
 
         return new int[]{nI,nJ};
+    }
+
+    public static void removeDuplicated(){
+        for(int i = 0; i < n ;i++){
+            for(int j = 0; j < n ; j++){
+                if(balls[i][j] > 1){
+                    balls[i][j] = 0;
+                }
+            }
+        }
     }
 }
