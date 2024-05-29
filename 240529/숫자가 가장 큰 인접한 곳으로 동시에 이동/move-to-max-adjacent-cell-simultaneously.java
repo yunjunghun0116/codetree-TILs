@@ -23,7 +23,7 @@ public class Main {
 
         System.out.println(cnt);
     }
-    
+
     public static void setInput(){
         Scanner sc = new Scanner(System.in);
         String[] sizeInput = sc.nextLine().split(" ");
@@ -80,6 +80,7 @@ public class Main {
             if(nextI < 0 || nextI >= n || nextJ < 0 || nextJ >= n) continue;
             if(board[nextI][nextJ] > maxValue){
                 result = new int[]{nextI,nextJ};
+                maxValue = board[nextI][nextJ];
             }
         }
 
