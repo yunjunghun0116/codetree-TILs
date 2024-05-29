@@ -48,9 +48,9 @@ public class Main {
         System.out.println(cnt);
     }
     public static void nextTime(){
-        removeDuplicated();
-        
         List<int[]> nextPosList = new ArrayList<>();
+
+        removeDuplicated();
 
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
@@ -70,20 +70,18 @@ public class Main {
         int[] dy = {-1,1,0,0};
         int[] dx = {0,0,-1,1};
 
-        int nI = i;
-        int nJ = j;
-
+        int maxValue = 0;
+        int[] result = new int[]{};
         for(int k = 0; k < 4; k++){
             int nextI = i + dy[k];
             int nextJ = j + dx[k];
             if(nextI < 0 || nextI >= n || nextJ < 0 || nextJ >= n) continue;
-            if(board[nextI][nextJ] > board[nI][nJ]){
-                nI = nextI;
-                nJ = nextJ;
+            if(board[nextI][nextJ] > maxValue){
+                result = new int[]{nextI,nextJ};
             }
         }
 
-        return new int[]{nI,nJ};
+        return result;
     }
 
     public static void removeDuplicated(){
