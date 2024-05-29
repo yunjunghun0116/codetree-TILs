@@ -44,11 +44,15 @@ public class Main {
         }
     }
     public static void check(){
-        int sum = board[0][list.get(0)];
+        int sum = 0;
         for(int i = 0; i < n-2; i++){
             if(board[list.get(i)][list.get(i+1)] == 0) return;
             sum += board[list.get(i)][list.get(i+1)];
         }
+        if(board[0][list.get(0)] == 0 || board[list.get(n-2)][0] == 0){
+            return;
+        }
+        sum+= board[0][list.get(0)];
         sum+= board[list.get(n-2)][0];
 
         minValue = Math.min(minValue,sum);
