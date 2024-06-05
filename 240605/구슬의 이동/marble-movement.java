@@ -61,7 +61,7 @@ public class Main {
                 if(board[i][j].isEmpty()) continue;
                 List<Pair> list = board[i][j];
                 if(list.size()>k){
-                    Collections.sort(list,(a,b)->b.getMoveCount()==a.getMoveCount?b.getValue()-a.getValue():b.getMoveCount()-a.getMoveCount());
+                    Collections.sort(list,(a,b)->b.getMoveCount()==a.getMoveCount()?b.getValue()-a.getValue():b.getMoveCount()-a.getMoveCount());
                 }
                 for(int m = 0; m < Math.min(board[i][j].size(), k); m++){
                     tempPairs.add(board[i][j].get(m));
