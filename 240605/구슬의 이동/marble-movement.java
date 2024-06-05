@@ -20,8 +20,6 @@ public class Main {
         }
         
         System.out.println(result);
-
-        
     }
     public static void setUp(){
         Scanner sc = new Scanner(System.in);
@@ -60,15 +58,15 @@ public class Main {
         List<Pair> tempPairs = new ArrayList<>();
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
+                if(board[i][j].isEmpty()) continue;
                 List<Pair> list = board[i][j];
-                if(list.isEmpty()) continue;
-                if(list.size() > k){
-                    Collections.sort(list,(a,b)->b.getValue()-a.getValue());
+                if(list.size()>k){
+                    Collections.sort(list,(a,b)->b.getMoveCount()==a.getMoveCount?b.getValue()-a.getValue():b.getMoveCount()-a.getMoveCount());
                 }
-                for(int m = 0; m < Math.min(list.size(), k); m++){
-                    tempPairs.add(list.get(m));
+                for(int m = 0; m < Math.min(board[i][j].size(), k); m++){
+                    tempPairs.add(board[i][j].get(m));
                 }
-                board[i][j].clear();
+                board[i][j] = new ArrayList<>();
             }
         }
 
@@ -113,5 +111,8 @@ class Pair {
     }
     public int getValue(){
         return value;
+    }
+    public int getMoveCount(){
+        return moveCount;
     }
 }
