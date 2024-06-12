@@ -63,7 +63,7 @@ public class Main {
             currNum = board[i][col];
             currCount = 1;
         }
-        return false;
+        return currCount >= m;
     }
 
 }
